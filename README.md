@@ -28,8 +28,6 @@ model.add(Flatten())
 
 model.add(Dense(128,activation='relu'))
 
-# Output Layer softmax-->multiclass
-
 model.add(Dense(10,activation='softmax'))
 
 #keras.io/metrics
@@ -65,7 +63,7 @@ def create_perturbation(input_image, input_label):
         loss = loss_object(input_label, prediction)
      # Get the gradients of the loss w.r.t to the input image.
     gradient = tape.gradient(loss, input_image)
-  # Get the sign of the gradients to create the perturbation
+    #Get the sign of the gradients to generate the perturbation
     signed_grad = tf.sign(gradient)
     
     return signed_grad
